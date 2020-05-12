@@ -4,7 +4,7 @@ import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js'
 import {CartContext} from '../context/CartContext'
 
 import {formatPrice} from '../utils/format'
-
+import {API_URL} from '../utils/url'
 
 
 const Card_Styles = {
@@ -43,11 +43,11 @@ export default () => {
 
     const {cart, clearCart} = useContext(CartContext)
 
-    const [receiver_name, setReceiver_name] = useState('')
-    const [receiver_address, setReceiver_address] = useState('')
-    const [receiver_state, setReceiver_state] = useState('')
-    const [receiver_country, setReceiver_country] = useState('')
-    const [receiver_postal, setReceiver_postal] = useState('')
+    const [shipping_name, setShipping_name] = useState('')
+    const [shipping_address, setShipping_address] = useState('')
+    const [shipping_state, setShipping_state] = useState('')
+    const [shipping_country, setShipping_country] = useState('')
+    const [shipping_zip, setShipping_zip] = useState('')
 
     const [token, setToken] = useState(null)
     const [total, setTotal] = useState('loading')
@@ -59,7 +59,7 @@ export default () => {
     const [success, setSuccess] = useState(null) 
 
     const valid = () => {
-        if(!receiver_name || !receiver_address || !receiver_state || !receiver_country || !receiver_postal){
+        if(!shipping_name || !shipping_address || !shipping_state || !shipping_country || !shipping_zip){
             return false
         }
         
@@ -68,38 +68,33 @@ export default () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        const billing_details = {
-        name:document.getElementById("receiver_name").value,
-        phone:document.getElementById("receiver_phone").value,
-        address: {
-              city: document.getElementById("receiver_city").value,
-              country: document.getElementById("receiver_country").value,
-              line1: document.getElementById("receiver_address").value,
-              line2: document.getElementById("receiver_postal").value
-            }
-          };
         setLoading(true)
         console.log("HandleSubmit", event)
         const result = await stripe.confirmCardPayment(token, {
             payment_method: {
-                card: elements.getElement(CardElement),
-                billing_details
-             
-                
+                card: elements.getElement(CardElement)
             }
         })
 
         const data = {
             paymentIntent: result.paymentIntent,
-          
-            cart,
-       
-         
-            
-          
+            shipping_name,
+            shipping_address,
+            shipping_state,
+            shipping_country,
+            shipping_zip,
+            cart
         }
         
-     
+        const response = await fetch(`${API_URL}/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+
+        const order = await response.json()
 
         setSuccess(true)
 
@@ -111,7 +106,7 @@ export default () => {
     useEffect(() => {
         const loadToken = async () => {
             setLoading(true)
-            const response = await fetch('http://localhost:1337/orders/payment', {
+            const response = await fetch(`${API_URL}/orders/payment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -119,10 +114,7 @@ export default () => {
                 body: JSON.stringify({
                     cart: cart.map(product => (
                         {...product, ...{id: product.strapiId}}
-                    )),
-                    
-
-                   
+                    ))
                 })
             })
 
@@ -154,38 +146,16 @@ export default () => {
                     onSubmit={handleSubmit}
                 >
     
-
-
-
-
-<div>
-    <strong>Receiver </strong>
-    <p><input type="text" name="receiver_name" placeholder="Receiver Name" className="input" id="receiver_name" /></p>
-    <p><input type="text" name="receiver_address" placeholder="Address" className="input" id="receiver_address" /></p>
-    <p><input type="text" name="receiver_city" placeholder="City" className="input" id="receiver_city" /></p>
-    <p><input type="text" name="receiver_country" placeholder="Country" className="input" id="receiver_country" /></p>
-    <p><input type="text" name="receiver_postal" placeholder="Postal Code" className="input" id="receiver_postal" /></p>
-    <p><input type="text" name="receiver_phone" placeholder="Phone" className="input" id="receiver_phone" /></p>
-
-</div>
-<div>
-    <strong>Sender </strong>
-    <p><input type="text" name="sender_name" placeholder="Name on Card" className="input" id="receiver_phone" /></p>
-   
-
-</div>
-
-
-
-
-
-                  
-    
+                    {generateInput('Shipping Recipient', shipping_name, setShipping_name)}
+                    {generateInput('Shipping Address', shipping_address, setShipping_address)}
+                    {generateInput('State', shipping_state, setShipping_state)}
+                    {generateInput('Country', shipping_country, setShipping_country)}
+                    {generateInput('Zip', shipping_zip, setShipping_zip)}
     
                     <CardElement options={Card_Styles}/>
                     <button 
                         style={{marginTop: '12px'}}
-                        disabled={!stripe }
+                        disabled={!stripe || !valid()}
                     >
                         Buy it
                     </button>
