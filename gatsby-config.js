@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: "https://bonmaket-server1.herokuapp.com",
+        apiURL: process.env.API_URL || "http://localhost:1337",
         queryLimit: 1000, // Default to 100
         contentTypes: [`product`],
         //If using single types place them in this array.
