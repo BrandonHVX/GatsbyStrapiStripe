@@ -2,9 +2,9 @@ import React, {useEffect, useState, useContext} from 'react'
 import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js'
 
 import {CartContext} from '../context/CartContext'
+import {API_URL} from '../utils/url'
 
 import {formatPrice} from '../utils/format'
-import {API_URL} from '../utils/url'
 
 
 const Card_Styles = {
