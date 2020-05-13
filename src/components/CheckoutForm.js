@@ -145,13 +145,18 @@ export default () => {
                     }}
                     onSubmit={handleSubmit}
                 >
-    
-                    {generateInput('Shipping Recipient', shipping_name, setShipping_name)}
-                    {generateInput('Shipping Address', shipping_address, setShipping_address)}
-                    {generateInput('State', shipping_state, setShipping_state)}
-                    {generateInput('Country', shipping_country, setShipping_country)}
-                    {generateInput('Zip', shipping_zip, setShipping_zip)}
-    
+
+
+
+
+                    <h2>Receiver</h2>
+                    {generateInput('Receiver Name: (Person Receiving Package)', shipping_name, setShipping_name)}
+                    {generateInput('Address (House Number)', shipping_address, setShipping_address)}
+                    {generateInput('City', shipping_state, setShipping_state)}
+                    {generateInput('Province', shipping_country, setShipping_country)}
+                    {generateInput('Phone', shipping_zip, setShipping_zip)}
+                    <h2>Sender</h2>
+                    {generateInput('Sender Name: (Person Sending Package)', shipping_name, setShipping_name)}
                     <CardElement options={Card_Styles}/>
                     <button 
                         style={{marginTop: '12px'}}
