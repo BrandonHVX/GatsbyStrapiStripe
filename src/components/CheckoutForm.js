@@ -86,7 +86,7 @@ export default () => {
             cart
         }
         
-        const response = await fetch('http://localhost:1337/orders', {
+        const response = await fetch(`${API_URL}/orders`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ export default () => {
     useEffect(() => {
         const loadToken = async () => {
             setLoading(true)
-            const response = await fetch('http://localhost:1337/orders/payment', {
+            const response = await fetch(`${API_URL}/orders/payment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
