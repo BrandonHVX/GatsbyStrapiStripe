@@ -33,26 +33,74 @@ const ProductTemplate = ({data}) => {
     console.log("ProductTemplate.render data", data)
     return(
         <Layout>
-            <div>
 
-<div style={image}> <Img fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
-           
 
-<div className="product-details">
-            <h2>{data.strapiProduct.name}</h2>
-            <p>{data.strapiProduct.description}</p>
-            <p>Price: {formatPrice(data.strapiProduct.price_in_cent)}</p>
-            <input 
+            <div class="container">
+     
+            <div class="text-center">
+            <div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row justify-content-center">
+					<div class="preview col-md-6">
+						
+						<div class="preview-pic tab-content">
+						  <div  id="pic-1">
+                          <Img fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} />
+                          
+                          
+                          
+                          </div>
+						
+						</div>
+				
+						
+					</div>
+					<div class="details col-md-6">
+						<h3 class="product-title">{data.strapiProduct.name}</h3>
+						<div class="rating">
+							<div class="stars">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+							</div>
+							<span class="review-no">41 reviews</span>
+						</div>
+						<p class="product-description">{data.strapiProduct.description}</p>
+						<h4 class="price">current price: <span>{formatPrice(data.strapiProduct.price_in_cent)}</span></h4>
+                        <div><p class="vote"> Select your quanity </p><input 
                 type="number" 
+                min="0"
                 value={qty} 
                 onChange={(event) => setQty(event.target.value)}
-            />
-            <button 
-                onClick={() => addToCart(data.strapiProduct, qty)}
-                style={{fontSize: '20px', padding: '24px', borderRadius: '2px'}}>
-                Add To Cart
-            </button>
-            </div>
+            /></div>
+						
+					
+					
+						<div class="action m-5">
+							<button  onClick={() => addToCart(data.strapiProduct, qty)}class="add-to-cart btn btn-default" type="button">add to cart</button>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
 </div>
         </Layout>
 
@@ -69,6 +117,13 @@ export const query = graphql`
             price_in_cent
             description
             thumbnail {
+                childImageSharp {
+                    fixed(width: 340){
+                        ...GatsbyImageSharpFixed
+                    }
+                }
+            }
+            item_image_one {
                 childImageSharp {
                     fixed(width: 340){
                         ...GatsbyImageSharpFixed

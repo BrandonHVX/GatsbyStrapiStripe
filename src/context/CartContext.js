@@ -44,6 +44,17 @@ export default ({children}) => {
         updateCart(updatedCart)
     }
 
+
+
+
+
+
+
+
+
+
+    
+
     return(
         <CartContext.Provider value={{cart, addToCart, clearCart}}>
             {children}

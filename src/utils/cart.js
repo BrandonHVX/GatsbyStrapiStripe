@@ -1,6 +1,6 @@
-export const TAX_RATE = process.env.TAX_RATE || 0.1
+export const TAX_RATE = process.env.TAX_RATE || 0
 export const FREE_SHIPPING_THRESHOLD = process.env.FREE_SHIPPING_THRESHOLD || 10000
-export const SHIPPING_RATE = process.env.SHIPPING_RATE || 500
+export const SHIPPING_RATE = process.env.SHIPPING_RATE || 1000
 
 export const saveCart = (cart) => {
     localStorage.setItem('cart', JSON.stringify(cart))
@@ -32,7 +32,7 @@ export const cartSubtotal = (cart) => {
 export const shouldPayShipping = (cart) => {
     const subTotal = cartSubtotal(cart)
     
-    return subTotal < FREE_SHIPPING_THRESHOLD
+    return subTotal + FREE_SHIPPING_THRESHOLD
 }
 
 export const cartTotal = (cart) => {

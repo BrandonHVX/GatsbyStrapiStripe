@@ -29,23 +29,26 @@ export default () => {
     return(
         <Layout>
             <SEO title="Cart" />
-            <h2>Cart</h2>
+            <div class="container">
+            <div class="page">
+            <div className="section-heading text-center mb-5">
+                <h1>Checkout</h1>
+                <p className="text-muted">Purchase Cart!</p>
+                <hr class="mb-3" />
+              </div>
+       
             {cart && cart.length > 0 &&
                 <>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    Product
-                                </th>
-                                <th>
-                                    Price
-                                </th>
-                                <th>
-                                    Quantity
-                                </th>
-                            </tr>
-                        </thead>
+                    <table id="cart" class="table table-hover table-condensed">
+                    <thead>
+						<tr>
+							<th style={{width:"50%"}}>Product</th>
+							<th style={{width:"50%"}}>Price</th>
+							<th style={{width:"50%"}}>Quantity</th>
+							<th style={{width:"50%"}}class="text-center">Subtotal</th>
+							<th style={{width:"50%"}}></th>
+						</tr>
+					</thead>
                         <tbody>
                             {cart.map(product => (
                                 <tr>
@@ -71,38 +74,59 @@ export default () => {
                                         }}>+</span>
 
                                     </td>
+                                    <td style={{textAlign: 'center'}}>{formatPrice(cartSubtotal(cart))}</td>
+                                          
                                 </tr>
                             ))}
                         </tbody>
-                    </table>
-
-                    <h3>Subtotal: {formatPrice(cartSubtotal(cart))}</h3>
+                        <tfoot>
+						<tr class="visible-xs">
+							<td class="text-center"><strong>
                     {shouldPayShipping(cart) &&
-                        <h3>Shipping: {formatPrice(SHIPPING_RATE)}</h3>
+                        <h5>Delivery: {formatPrice(SHIPPING_RATE)}</h5>
                     }
                     {!shouldPayShipping(cart) &&
-                        <h3>Shipping is free!</h3>
-                    }
-                    <h3>Total: {formatPrice(cartTotal(cart))}</h3>
+                        <h5>Shipping is free!</h5>
+                    }</strong></td>
+						</tr>
+						<tr>
+							<td>     <button style={{fontSize: '12px'}} href="#" class="btn-shopping"> Continue Shopping</button></td>
+							<td colspan="2" class="hidden-xs"></td>
+							<td class="hidden-xs text-center"><strong>Total: {formatPrice(cartTotal(cart))}</strong></td>
+							<td>
+
+
+
+                            </td>
+						</tr>
+					</tfoot>
+                    </table>
+
+              
+                   
                 </>
             }
             
 
-            
+             
 
-            <div>
+            <div style={{ display: 'flex', justifyContent: "center"}}>
+       
                 {cart && cart.length > 0 &&
-                    <button 
+                    <button className="btn-checkout"
                         onClick={() => setShowCheckout(true)}
                         style={{fontSize: '24px', padding: '12px 24px'}}
                     >
-                        Initiate Checkout
+                       Start Checkout
                     </button>
                 }
             </div>
             {showCheckout &&
                 <Checkout cart={cart} />
             }
+
+</div>
+</div>
         </Layout>
     )
 }

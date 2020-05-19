@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import '../sass/new-age.scss';
-
+import './layout.css';
 
 const shop = {
   padding: '10px 20px 40px 20px'
@@ -31,15 +31,21 @@ const Layout = ({ children }) => {
 
   return (
     <>
+    
       <Header siteTitle={data.site.siteMetadata.title} />
+      
       <div
-  
+        style={{
+          margin: `0 auto`,
+          maxWidth: 1960,
+          
+        }}
       >
-    <div style={shop}>{children}</div>
+        <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
+          © {new Date().getFullYear()}, All rights reserved
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          Bonmaket
         </footer>
       </div>
     </>
