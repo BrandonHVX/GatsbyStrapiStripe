@@ -123,13 +123,7 @@ export const query = graphql`
                     }
                 }
             }
-            item_image_one {
-                childImageSharp {
-                    fixed(width: 340){
-                        ...GatsbyImageSharpFixed
-                    }
-                }
-            }
+           
         }
     }
 `
