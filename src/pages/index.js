@@ -247,6 +247,9 @@ export const pageQuery = graphql`
         name
         price_in_cent
         strapiId
+        location
+        address
+        city
         slug
         thumbnail {
           childImageSharp {

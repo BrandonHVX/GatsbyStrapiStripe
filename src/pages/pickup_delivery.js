@@ -100,6 +100,10 @@ export const pageQuery = graphql`
         description
         created_at
         name
+        location
+        address
+        city
+        phone
         price_in_cent
         strapiId
         slug

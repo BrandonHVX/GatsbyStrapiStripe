@@ -39,7 +39,7 @@ const ProductTemplate = ({data}) => {
             <div class="container">
      
             <div class="text-center">
-            <div class="card">
+            <div class="product-card">
 			<div class="container-fliud">
 				<div class="wrapper row justify-content-center">
 					<div class="preview col-md-6">
@@ -68,9 +68,13 @@ const ProductTemplate = ({data}) => {
 							</div>
 							<span class="review-no">41 reviews</span>
 						</div>
-						<p class="product-description">{data.strapiProduct.description}</p>
-						<h4 class="price">current price: <span>{formatPrice(data.strapiProduct.price_in_cent)}</span></h4>
-                        <div><p class="vote"> Select your quanity </p>
+                        <h4 class="product-description">{data.strapiProduct.location}</h4>
+                        <h4 class="product-address">{data.strapiProduct.address}</h4>
+                        <h4 class="product-city">{data.strapiProduct.city}</h4>
+                        <h4 class="product-phone">{data.strapiProduct.phone}</h4>
+
+						<h4 class="price"><span>{formatPrice(data.strapiProduct.price_in_cent)}</span></h4>
+                        <div>
                         <div class="action m-3">
 
                         <Link to="/cart">
@@ -119,6 +123,10 @@ export const query = graphql`
         strapiProduct(id: {eq: $id}) {
             strapiId
             name
+            location
+            address
+            city
+            phone
             price_in_cent
             description
             thumbnail {

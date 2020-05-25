@@ -15,6 +15,7 @@ import {
   faArrowAltCircleLeft,
 } from "@fortawesome/free-solid-svg-icons"
 import { Carousel } from 'react-responsive-carousel';
+import ReactSwipe from "react-swipe"
 
 const row = {
     width: '475px',
@@ -23,6 +24,10 @@ const row = {
     borderRadius: '4px',
     backgroundColor: '#7795f8',
     position: 'relative',
+}
+
+const buttonspace = {
+    marginRight: '50px'
 }
 
 const image= {
@@ -57,29 +62,44 @@ const ProductTemplate = ({data}) => {
             <div class="container ">
         
             <div class="text-center">
-            <div className="card" >
+            <div className="product-card" >
            			<div class="container">
-			<div class="wrapper row justify-content-center mb-5">
-					<div class=" col-lg-8">
+			<div class="wrapper row  mb-5">
+					<div class="col-lg-7 mt-5">
                      <div >
- 						  <div>
-                           <AwesomeSlider>
-    <div>                   <Img
-            fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
-    <div>                   <Img
-            fixed={data.strapiProduct.products_one.childImageSharp.fixed} /></div>
-    <div>                   <Img
-            fixed={data.strapiProduct.products_two.childImageSharp.fixed} /></div>
-    <div>                   <Img
-            fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
-  </AwesomeSlider>
-            
-         
-        
+ 					
+                           <ReactSwipe
+                  className="swipe"
+                  swipeOptions={{ continuous: false }}
+                  ref={el => (reactSwipeEl = el)}
+                >
+                  <div>
+                 
+                    <Img fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} />
 
-</div>
+                  </div>
+                  <div>
+                  <Img fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} />
 
+                  </div>
+                  <div>
+                  <Img fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} />
+                    
+                  </div>
+                </ReactSwipe>
 
+	  Swipe Or Click To View Products
+
+  <div class="nav-buttons p-5">
+                  <FontAwesomeIcon style={buttonspace}
+                    onClick={() => reactSwipeEl.prev()}
+                    icon={faArrowAltCircleLeft}
+                  />
+                  <FontAwesomeIcon
+                    onClick={() => reactSwipeEl.next()}
+                    icon={faArrowAltCircleRight}
+                  />
+                </div>
 
 
 
@@ -149,21 +169,21 @@ export const query = graphql`
             description
             thumbnail {
                 childImageSharp {
-                    fixed(width: 340){
+                    fixed(width: 300){
                         ...GatsbyImageSharpFixed
                     }
                 }
             }
             products_one {
                 childImageSharp {
-                    fixed(width: 340){
+                    fixed(width: 300){
                         ...GatsbyImageSharpFixed
                     }
                 }
             }
             products_two {
                 childImageSharp {
-                    fixed(width: 340){
+                    fixed(width: 300){
                         ...GatsbyImageSharpFixed
                     }
                 }

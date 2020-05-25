@@ -13,7 +13,7 @@ module.exports = {
         apiURL: 'https://bonmaket-store.herokuapp.com', 
         queryLimit: 1000, // Default to 100
         contentTypes: [`product`],
-        //If using single types place them in this array
+        //If using single types place them in this array.
        
       
       },
@@ -42,6 +42,6 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }

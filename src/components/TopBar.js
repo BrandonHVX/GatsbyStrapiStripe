@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import React, {useContext} from "react"
 import LogoImage from './LogoImage'
 import {CartContext} from '../context/CartContext'
+import {Dropdown, DropdownButton, DropdownItem} from 'react-bootstrap';
 
 const Header = ({ siteTitle }) => {
 
@@ -27,27 +28,22 @@ const Header = ({ siteTitle }) => {
           
            
             
-            <div class="navi-left">
+            <div class="navi-left ml-2">
 
+
+<Dropdown>
+  <Dropdown.Toggle c variant="success" id="dropdown-basic">
+  <i class="fas fa-phone-alt mr-2"></i>Phone
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+    <Dropdown.Item href="tel:1-877-886-2538">🇺🇸  1-877-88MAKET</Dropdown.Item>
+    <Dropdown.Item href="tel:+509-3210-5555">🇭🇹  +509-3210-5555</Dropdown.Item>
  
-
+  </Dropdown.Menu>
+</Dropdown>
  
-<div class="navi-links-left">
-  <a href="tel:1-877-886-2538" class='fas fa-phone-alt' target="_blank"> </a>
-
-1-877-MAKET
-
 </div>
-</div>
-            
-            
-            
-            
-         
-      
-
-       
-         
                 <div
                   style={{
                     position: 'absolute',
