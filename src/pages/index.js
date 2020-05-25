@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import Scroll from '../components/Scroll';
 import demo1 from "../images/bonmaket-moblie.jpg"
 import BackgroundImage from 'gatsby-background-image'
-import LogoImage from "../components/LogoImage"
+import HeaderImage from "../components/HeaderImage"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
@@ -38,9 +38,7 @@ const IndexPage = ({data}) => (
   <Layout>
      
     <SEO title="Home" />
-<BackgroundImage>
-
-</BackgroundImage>
+<HeaderImage/>
   <section className="about">
   <div className="about-content">
         <div className="container">

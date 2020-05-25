@@ -19,7 +19,7 @@ const Head = () => {
     banner: file(relativePath: {eq: "bon-hero1.jpg"}) {
       id
       childImageSharp {
-        fluid(maxWidth: 2800){
+        fluid(maxWidth: 800){
           ...GatsbyImageSharpFluid
         }
       }
@@ -28,7 +28,7 @@ const Head = () => {
   
   `)
 
-  return <Img fluid={data.banner.childImageSharp.fluid} />
+  return <Img className="mt-5" fluid={data.banner.childImageSharp.fluid} />
 }
 
 export default Head
