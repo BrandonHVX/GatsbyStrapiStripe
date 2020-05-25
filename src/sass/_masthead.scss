@@ -1,4 +1,8 @@
 // Styling for the masthead
+.head-image {
+  margin-top: 150px;
+}
+
 header.masthead {
   position: relative;
 
@@ -41,5 +45,8 @@ header.masthead {
     .device-container {
       max-width: 325px;
     }
-  }
+  
+}
+
+
 }

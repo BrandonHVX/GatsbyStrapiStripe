@@ -59,15 +59,15 @@ section.products {
         height: 400px;
   }
   
-  @media screen and (max-width: 768px) {
-    min-width: 400px;
+  @media screen and (max-width: 568px) {
+    min-width: 300px;
     height: auto;
     margin: 180px auto;
   }
   
   
-  @media screen and (max-height: 500px) and (min-width: 992px) {
-        height: 350px;
+  @media screen and (max-height: 500px)  {
+        width:  350px;
   }
   
   &__item {

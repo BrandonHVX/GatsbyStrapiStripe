@@ -1,25 +1,28 @@
-section.p-page {
+.pickup-delivery-page {
+  position: relative;
+  justify-content: center;
+height: 100vh;
+  background-position: center;
+  display: flex;
+margin-top: 250px;
+margin-bottom: 200px;
+  @include background-cover;
+  .products-content {
     position: relative;
-    justify-content: center;
-    display: flex;
-    padding-top: 200px;
-    background-position: center;
-    @include background-cover;
-    .pd-content {
-      position: relative;
-      z-index: 1;
-      h2 {
-      @include heading-font;
-      }
-      p {
-      @include body-font;
-     
-      }
-      @media (min-width: 768px) {
-        h2 {
-            @include heading-font;
-        }
-      }
+    z-index: 1;
+    h2 {
+    @include heading-font;
     }
-  
+    p {
+    @include body-font;
+   
+    }
+    @media (min-width: 768px) {
+      h2 {
+          @include heading-font;
+      }
+      height: 90vh;
+    }
   }
+
+}

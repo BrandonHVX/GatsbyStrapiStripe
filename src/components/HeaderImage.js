@@ -19,7 +19,7 @@ const Head = () => {
     banner: file(relativePath: {eq: "bon-hero1.jpg"}) {
       id
       childImageSharp {
-        fluid(maxWidth: 800){
+        fluid(maxWidth: 600){
           ...GatsbyImageSharpFluid
         }
       }

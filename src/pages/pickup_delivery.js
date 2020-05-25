@@ -41,7 +41,7 @@ const Pickup_DeliveryPage = ({data}) => (
   <Layout>
      
     <SEO title="Home" />
-         <section className="p-page">
+         <div className="pickup-delivery-page">
   <div className="products-content">
         <div className="container">
    
@@ -85,7 +85,7 @@ const Pickup_DeliveryPage = ({data}) => (
         </div>
       </div>
       <div className="overlay"></div>
-          </section>
+          </div>
   </Layout>
 )
 

@@ -12,7 +12,7 @@ const Header = ({ siteTitle }) => {
   return(
       <header
         style={{
-          background: 'linear-gradient(to right, #ff0000 0%,#b10000 100%)'
+          background: 'linear-gradient(to right, #cb0505 0%,#f4821f 100%)'
 
         }}
       >
@@ -35,7 +35,7 @@ const Header = ({ siteTitle }) => {
 <div class="navi-links-left">
   <a href="tel:1-877-886-2538" class='fas fa-phone-alt' target="_blank"> </a>
 
-1-877-MAKET
+
 
 </div>
 </div>

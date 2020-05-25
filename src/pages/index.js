@@ -38,7 +38,8 @@ const IndexPage = ({data}) => (
   <Layout>
      
     <SEO title="Home" />
-<HeaderImage/>
+    <div className="head-image"><HeaderImage /></div>
+
   <section className="about">
   <div className="about-content">
         <div className="container">

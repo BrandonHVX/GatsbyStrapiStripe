@@ -71,6 +71,12 @@ const ProductTemplate = ({data}) => {
 						<p class="product-description">{data.strapiProduct.description}</p>
 						<h4 class="price">current price: <span>{formatPrice(data.strapiProduct.price_in_cent)}</span></h4>
                         <div><p class="vote"> Select your quanity </p>
+                        <div class="action m-3">
+
+                        <Link to="/cart">
+							<button  onClick={() => productInCart(data.strapiProduct, qty)}class="add-to-cart btn btn-default" type="button">Checkout</button>
+						</Link>
+						</div>
           </div>
 						
 					
@@ -80,26 +86,7 @@ const ProductTemplate = ({data}) => {
 				</div>
                 <div class="wrapper  row justify-content-center">
 			
-					<div class="details col-md-6 mt-5">
-						<h3 class="product-title">{data.strapiProduct.name}</h3>
-						<div class="rating">
-						
-					
-						</div>
-					
-						<h4 class="price">current price: <span>{formatPrice(data.strapiProduct.price_in_cent)}</span></h4>
-                        <div><p class="vote"> Select your quanity </p>
-          </div>
-						
-					
-					
-						<div class="action m-5">
-
-                        <Link to="/cart">
-							<button  onClick={() => productInCart(data.strapiProduct, qty)}class="add-to-cart btn btn-default" type="button">Checkout</button>
-						</Link>
-						</div>
-					</div>
+		
 				</div>
 			</div>
 		</div>

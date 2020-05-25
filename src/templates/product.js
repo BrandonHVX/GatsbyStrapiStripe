@@ -99,7 +99,8 @@ const ProductTemplate = ({data}) => {
 
 
 <div>
-<div class="form-group">
+<div class="form-group row justify-content-center ">
+<div class="col-xs-2">
     <label for="exampleSelect1"> Select your quanity</label>
     <select value={qty} 
                  onChange={(event) => setQty(event.target.value)} class="form-control" id="exampleSelect1">
@@ -110,7 +111,7 @@ const ProductTemplate = ({data}) => {
       <option>5</option>
     </select>
   </div>
- 
+  </div>
   
 
 </div>
