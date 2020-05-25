@@ -35,7 +35,7 @@ const Header = ({ siteTitle }) => {
 <div class="navi-links-left">
   <a href="tel:1-877-886-2538" class='fas fa-phone-alt' target="_blank"> </a>
 
-
+1-877-MAKET
 
 </div>
 </div>

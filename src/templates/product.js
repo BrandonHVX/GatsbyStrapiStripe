@@ -67,9 +67,9 @@ const ProductTemplate = ({data}) => {
     <div>                   <Img
             fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
     <div>                   <Img
-            fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
+            fixed={data.strapiProduct.products_one.childImageSharp.fixed} /></div>
     <div>                   <Img
-            fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
+            fixed={data.strapiProduct.products_two.childImageSharp.fixed} /></div>
     <div>                   <Img
             fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
   </AwesomeSlider>
