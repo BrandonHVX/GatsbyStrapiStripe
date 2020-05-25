@@ -3,7 +3,6 @@ import { Link, graphql } from "gatsby"
 import Img from 'gatsby-image'
 import Scroll from '../components/Scroll';
 import BackgroundImage from 'gatsby-background-image'
-import LogoImage from "../components/LogoImage"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
