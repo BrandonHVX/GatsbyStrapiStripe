@@ -145,7 +145,7 @@ export const query = graphql`
         strapiProduct(id: {eq: $id}) {
             strapiId
             name
-            type
+          
             price_in_cent
             description
             thumbnail {
