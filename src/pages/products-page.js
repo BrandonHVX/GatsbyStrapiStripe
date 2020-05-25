@@ -2,7 +2,6 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from 'gatsby-image'
 import Scroll from '../components/Scroll';
-import demo1 from "../images/bonmaket-moblie.jpg"
 import BackgroundImage from 'gatsby-background-image'
 import LogoImage from "../components/LogoImage"
 import Layout from "../components/layout"
