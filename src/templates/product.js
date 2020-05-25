@@ -5,7 +5,6 @@ import { CartContext } from "../context/CartContext"
 import Layout from "../components/layout"
 import {formatPrice} from '../utils/format'
 import {Card, Accordion} from 'react-bootstrap'
-import ReactSwipe from "react-swipe"
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
