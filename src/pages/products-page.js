@@ -112,7 +112,6 @@ export const pageQuery = graphql`
         created_at
         name
         price_in_cent
-        type
         strapiId
         slug
         thumbnail {
