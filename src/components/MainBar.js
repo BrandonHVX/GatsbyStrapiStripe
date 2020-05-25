@@ -1,10 +1,10 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, {useContext} from "react"
-
+import LogoImage from './LogoImage'
 import {CartContext} from '../context/CartContext'
 
-const Header = ({ siteTitle }) => {
+const Main = ({ siteTitle }) => {
 
   const {cart} = useContext(CartContext)
   console.log("Header.render cart", cart)
@@ -12,8 +12,7 @@ const Header = ({ siteTitle }) => {
   return(
       <header
         style={{
-          background: `rebeccapurple`,
-          marginBottom: `1.45rem`,
+ 
         }}
       >
         <div
@@ -27,11 +26,12 @@ const Header = ({ siteTitle }) => {
             <Link
               to="/"
               style={{
-                color: `white`,
+                color: `red`,
                 textDecoration: `none`,
               }}
             >
-              {siteTitle}
+            <div style={{width: '100px'}}><LogoImage /></div>
+      
             </Link>
 
             {cart && cart.length > 0 &&
@@ -45,7 +45,10 @@ const Header = ({ siteTitle }) => {
                 >
                   <div 
                     style={{
-                      position: 'relative'
+                      position: 'relative',
+                      alignContent: 'center',
+                      marginTop: '20px'
+            
                     }}
                   >
                     🛒
@@ -80,12 +83,6 @@ const Header = ({ siteTitle }) => {
   
 }
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
-export default Header
+export default Main

@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import Scroll from '../components/Scroll';
 import demo1 from "../images/bonmaket-moblie.jpg"
 import BackgroundImage from 'gatsby-background-image'
-import Header from "../components/header"
+import LogoImage from "../components/LogoImage"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
@@ -34,40 +34,37 @@ backgroundColor: 'blue',
 
 
 
-
-
-
-
 const IndexPage = ({data}) => (
   <Layout>
      
     <SEO title="Home" />
+<BackgroundImage>
 
-  <Image/>
-  
-  <header class="mt-5">
-            <div className="container h-100">
-              <div className="row h-100">
-                <div className="col-lg-7 my-auto">
-                  <div className="section-heading text-center">
+</BackgroundImage>
+  <section className="about">
+  <div className="about-content">
+        <div className="container">
+        <div className="row h-100 justify-content center">
+        <div className="col-lg-7 my-auto">
+        <div className="section-heading text-center">
                     <h1>Welcome to Bonmaket</h1>
                     <p className="text-muted">Get More For Less!</p>
-                    <hr class="mb-3" />
-                  </div>
-                  <div className="header-content mx-auto">
-                    <h2 className="mb-5">
-                      Bonmaket is the first and best online grocery store in
+              <hr className="mb-3" />
+                    
+                    
+                     </div>
+                    <p className="text-center">   Bonmaket is the first and best online grocery store in
                       Haiti. Our user friendly website allows you to purchase
-                      your groceries at the comfort of your home or office!
-                    </h2>
-                    <Scroll type="id" element="download">
-                      <a href="#download" className="btn btn-outline btn-xl">
-                        Start Shopping
-                      </a>
-                    </Scroll>
-                  </div>
-                </div>
-                <div className="col-lg-5 my-5">
+                      your groceries at the comfort of your home or office!</p>
+                    
+                 <div className="about-button">    <Scroll type="id" element="contact">
+            <button href="#contact" className="btn btn-outline btn-xl">
+       Start Shopping
+            </button>
+          </Scroll></div>
+      
+          </div>
+          <div className="col-lg-5 my-5">
                   <div className="device-container">
                     <div className="device-mockup iphone6_plus portrait black">
                       <div className="device">
@@ -79,14 +76,16 @@ const IndexPage = ({data}) => (
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </header>
-          <section className="download  text-white text-center" id="download">
+          </div>
+        </div>
+      </div>
+      <div className="overlay"></div>
+          </section>
+          <section className="banner  text-white text-center" id="download">
             <div className="container">
               <div className="row">
                 <div className="col-md-8 mx-auto">
-                  <h2 className="section-heading">
+                  <h2 className="section-heading text-white">
                     Choose your very best pricing option.
                   </h2>
                   <p></p>
@@ -98,41 +97,51 @@ const IndexPage = ({data}) => (
               </div>
             </div>
           </section>
-          <section id="features">
-            <div className="section-heading text-center">
-              <h1>Select Your Cart!</h1>
-              <p className="text-muted">Our Products</p>
-              <hr class="mb-3" />
-            </div>
-
-            <div class='products'>
-            {data.allStrapiProduct.nodes.map(product => (
+          <section className="products" id="contact">
+  <div className="products-content">
+        <div className="container">
+   
+    
+        <div className="section-heading text-center">
+                    <h1>Select Your Cart!</h1>
+                    <p className="text-muted">Our Products</p>
+              <hr className="mb-3" />
+                    
+                    
+                     </div>
+                   
+                     {data.allStrapiProduct.nodes.slice(0,3).map(product => (
        <Link to={fromProductSlugToUrl(product.slug)}>
 
 
    
-    <div class="blog-slider">
-   <div class="blog-slider__wrp swiper-wrapper">
-     <div class="blog-slider__item swiper-slide">
-       <div class="blog-slider__img">
+    <div className="product-slider">
+   <div className="product-slider__wrp swiper-wrapper">
+     <div className="product-slider__item swiper-slide">
+       <div className="product-slider__img">
         
-        <Img class="img" fixed={product.thumbnail.childImageSharp.fixed} /> 
+        <Img className="img" fixed={product.thumbnail.childImageSharp.fixed} /> 
        </div>
-       <div class="blog-slider__content">
+       <div className="product-slider__content">
 
-         <div class="blog-slider__title">{product.name}</div>
-         <div class="blog-slider__text">{product.description}</div>
-         <button class="btn-products">View Cart</button>
+         <div className="product-slider__title">{product.name}</div>
+         <div className="product-slider__text">{product.description}</div>
+         <button className="btn">View Cart</button>
        </div>
      </div>
-   </div>   <div class="blog-slider__pagination"></div>
+   </div>   <div className="product-slider__pagination"></div>
  </div>
 
       </Link>
        
-      ))}</div>
+      ))}   
+                 
+   
+          
+        </div>
+      </div>
+      <div className="overlay"></div>
           </section>
-
     <section className="features">
             <div className="container">
               <div className="section-heading text-center mb-5">
@@ -148,15 +157,15 @@ const IndexPage = ({data}) => (
                 </div>
                 <div className="col-lg-8 col-md-12  my-auto ">
                   <div className="container-fluid mt-5">
-                    <div className="row">
-                      <div class="col-xl-6 col-lg-6 col-md-8">
-                        <div class="single-features mb-70">
-                          <div class="features-icon">
+                    <div className="row justify-content-center">
+                      <div className="col-xl-6 col-lg-6 col-md-8">
+                        <div className="single-features mb-70">
+                          <div className="features-icon">
                             <span>
                               <FontAwesomeIcon icon={faPhoneAlt} />
                             </span>
                           </div>
-                          <div class="features-caption">
+                          <div className="features-caption">
                             <h3>Fast Service </h3>
                             <p>
                               Many options to choose from! Pick-Up or Delivery
@@ -164,14 +173,14 @@ const IndexPage = ({data}) => (
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-6 col-lg-6 col-md-8">
-                        <div class="single-features mb-70">
-                          <div class="features-icon">
+                      <div className="col-xl-6 col-lg-6 col-md-8">
+                        <div className="single-features mb-70">
+                          <div className="features-icon">
                             <span>
                               <FontAwesomeIcon icon={faSeedling} />
                             </span>
                           </div>
-                          <div class="features-caption">
+                          <div className="features-caption">
                             <h3>Always Fresh</h3>
                             <p>
                               Speedy delivery of fresh food from reputable
@@ -181,15 +190,15 @@ const IndexPage = ({data}) => (
                         </div>
                       </div>
                     </div>
-                    <div className="row">
-                      <div class="col-xl-6 col-lg-6 col-md-8">
-                        <div class="single-features mb-70">
-                          <div class="features-icon">
+                    <div className="row justify-content-center">
+                      <div className="col-xl-6 col-lg-6 col-md-8">
+                        <div className="single-features mb-70">
+                          <div className="features-icon">
                             <span>
                               <FontAwesomeIcon icon={faAward} />
                             </span>
                           </div>
-                          <div class="features-caption">
+                          <div className="features-caption">
                             <h3>Quality Products</h3>
                             <p>
                               Large selection of branded items to meet the needs
@@ -198,22 +207,23 @@ const IndexPage = ({data}) => (
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-6 col-lg-6 col-md-8">
-                        <div class="single-features mb-70">
-                          <div class="features-icon">
+                      <div className="col-xl-6 col-lg-6 col-md-8">
+                        <div className="single-features mb-70">
+                          <div className="features-icon">
                             <span>
-                              <FontAwesomeIcon icon={faUserTie} />
+                              <FontAwesomeIcon icon={faAward} />
                             </span>
                           </div>
-                          <div class="features-caption">
-                            <h3>Customer Support</h3>
+                          <div className="features-caption">
+                            <h3>Quality Products</h3>
                             <p>
-                              Exceptional customer service and always meeting
-                              delivery expectations.
+                              Large selection of branded items to meet the needs
+                              of our customers
                             </p>
                           </div>
                         </div>
                       </div>
+                
                     </div>
                   </div>
                 </div>
@@ -237,12 +247,17 @@ export const pageQuery = graphql`
         created_at
         name
         price_in_cent
+        type
         strapiId
         slug
         thumbnail {
           childImageSharp {
             fixed(width: 300){
-              ...GatsbyImageSharpFixed
+                 base64
+    width
+    height
+    src
+    srcSet
           }
           }
         }
@@ -250,4 +265,5 @@ export const pageQuery = graphql`
       }
     }
   }
+  
 `

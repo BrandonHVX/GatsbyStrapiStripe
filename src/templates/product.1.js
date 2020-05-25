@@ -1,10 +1,15 @@
 // import React, {useState, useContext} from 'react'
-// import {graphql} from 'gatsby'
+// import {graphql, Link} from 'gatsby'
 // import Img from 'gatsby-image'
 // import { CartContext } from "../context/CartContext"
 // import Layout from "../components/layout"
 // import {formatPrice} from '../utils/format'
+// import {Card, Accordion} from 'react-bootstrap'
+// import styled from "styled-components"
+// import ReactSwipe from "react-swipe"
+// import AwesomeSlider from 'react-awesome-slider';
 
+// import { Carousel } from 'react-responsive-carousel';
 
 // const row = {
 //     width: '475px',
@@ -22,6 +27,13 @@
 // }
 
 
+// const pstyle= {
+//     fontSize: '20px'
+  
+// }
+
+
+
 
 
 
@@ -29,114 +41,90 @@
 
 //     const [qty, setQty] = useState(1)
 //     const { addToCart } = useContext(CartContext)
+//     let reactSwipeEl
 
 //     console.log("ProductTemplate.render data", data)
 //     return(
 //         <Layout>
-//             <div>
-//             <div class="movie-card">
 
-// <div class="container-one">
-
-//   <div className="cover justify-content-center"> <Img fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
-
-//   <div class="back-cover">
-//     <div class="details">
-
-//       <div class="title1">Breaking Bad <span>TV-14</span></div>
-
-//       <div class="title2"> TV Series (2008–2013) </div>
-
-
-//     </div>
-
-
-//   </div>
-
-//   <div class="about-movie">
-//     <div class="colum-one">
-
-//       <fieldset class="starRating">
-
-
-
-//         <input id="rating1" type="radio" data-length="1" name="rating" value="1"/>
-//         <label for="rating1"></label>
-
-//         <input id="rating2" data-length="2" type="radio" name="rating" value="2" checked/>
-//         <label for="rating2"></label>
-
-//         <input id="rating3" type="radio" data-length="3" name="rating" value="3"/>
-
-//         <label for="rating3"></label>
-
-
-//         <input id="rating4" data-length="4" type="radio" name="rating" value="4"/>
-//         <label for="rating4"></label>
-
-//         <input id="rating5" data-length="5" type="radio" name="rating" value="5"/>
-//         <label for="rating5"></label>
-
-
-//       </fieldset>
-//       <span class="likes">90 likes</span>
-
-//       <div class="colum-catogary">
-//         <span class="tag">Crime</span>
-//         <span class="tag">Drama</span>
-//         <span class="tag">Thriller</span>
-//         <div>
-//         </div>
-//       </div>
-//     </div>
-
-//     <div class="colum-second">
-
-//       <p> When chemistry teacher Walter White is diagnosed with Stage III cancer and given only two years to live, he decides he has nothing to lose.A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling
-//         methamphetamine in order to secure his family's financial future...<a href="#">
-//       read more
-//       </a>
-//       </p>
-//     </div>
-//   </div>
-// </div>
-
-// </div>
-
-
-
-
-
-
-
-
-
-
-
-// <div class="myName">
-//   <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/454262/profile/profile-80_2.jpg"/>
-//   <a href="https://codepen.io/collection/DpbVvq/" target="_blank"> Eslam UI</a>
-// </div>
-
-           
-
-// <div className="product-details">
-//             <h2>{data.strapiProduct.name}</h2>
-//             <p>{data.strapiProduct.description}</p>
-//             <p>Price: {formatPrice(data.strapiProduct.price_in_cent)}</p>
-//             <input 
+//          <section className="product-page">
+//   <div className="products-content">
+//             <div class="container">
+        
+//             <div class="text-center">
+//             <div class="card">
+// 			<div class="container-fliud">
+// 				<div class="wrapper row justify-content-center">
+// 					<div class="preview col-md-8">
+//                     <div class="preview-pic tab-content">
+//  						  <div  id="pic-1">
+ 
+//                            <Img
+//              fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} />
+//                           </div>
+						
+//  						</div>
+                
+// 					</div>
+// 					<div class="details col-md-6">
+// 						<h3 class="product-title">{data.strapiProduct.name}</h3>
+// 						<div class="rating">
+// 							<div class="stars">
+// 								<span class="fa fa-star checked"></span>
+// 								<span class="fa fa-star checked"></span>
+// 								<span class="fa fa-star checked"></span>
+// 								<span class="fa fa-star"></span>
+// 								<span class="fa fa-star"></span>
+// 							</div>
+// 							<span class="review-no">41 reviews</span>
+// 						</div>
+// 						<p class="product-description">{data.strapiProduct.description}</p>
+// 						<h4 class="price">Current Price: <span>{formatPrice(data.strapiProduct.price_in_cent)}</span></h4>
+// <div><p style={pstyle}> Select your quanity </p>
+// <input 
 //                 type="number" 
 //                 min="0"
 //                 value={qty} 
 //                 onChange={(event) => setQty(event.target.value)}
 //             />
-//             <button 
-//                 onClick={() => addToCart(data.strapiProduct, qty)}
-//                 style={{fontSize: '20px', padding: '24px', borderRadius: '2px'}}>
-//                 Add To Cart
-//             </button>
 //             </div>
+						
+					
+					
+// 						<div class="action m-5">
+
+//                         <Link to="/pickup_delivery">
+// 							<button  onClick={() => addToCart(data.strapiProduct, qty)}class="add-to-cart btn btn-default" type="button">add to cart</button>
+// 						</Link>
+// 						</div>
+// 					</div>
+// 				</div>
+
+
+
+
+
+
+
+
+
+
+
+                
+// 			</div>
+
+
+
+
+            
+// 		</div>
+
+
 // </div>
+// </div>
+// </div>
+// </section>
+
 //         </Layout>
 
 //     )
@@ -149,22 +137,31 @@
 //         strapiProduct(id: {eq: $id}) {
 //             strapiId
 //             name
+//             type
 //             price_in_cent
 //             description
 //             thumbnail {
-//                 childImageSharp {
-//                     fixed(width: 300){
-//                         ...GatsbyImageSharpFixed
-//                     }
-//                 }
-//             }
-//             item_image_one {
 //                 childImageSharp {
 //                     fixed(width: 340){
 //                         ...GatsbyImageSharpFixed
 //                     }
 //                 }
 //             }
+//             products_one {
+//                 childImageSharp {
+//                     fixed(width: 340){
+//                         ...GatsbyImageSharpFixed
+//                     }
+//                 }
+//             }
+//             products_two {
+//                 childImageSharp {
+//                     fixed(width: 340){
+//                         ...GatsbyImageSharpFixed
+//                     }
+//                 }
+//             }
+           
 //         }
 //     }
 // `

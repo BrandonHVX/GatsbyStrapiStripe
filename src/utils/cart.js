@@ -44,7 +44,7 @@ export const cartTotal = (cart) => {
 
     const shipping = shouldPayShipping(cart) ? SHIPPING_RATE : 0
 
-    const total = subTotal + subTotal * TAX_RATE + shipping
+    const total = subTotal + subTotal * TAX_RATE 
 
     return Math.round(total)
 }

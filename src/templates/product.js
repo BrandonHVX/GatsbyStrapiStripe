@@ -1,10 +1,22 @@
 import React, {useState, useContext} from 'react'
-import {graphql} from 'gatsby'
+import {graphql, Link} from 'gatsby'
 import Img from 'gatsby-image'
 import { CartContext } from "../context/CartContext"
 import Layout from "../components/layout"
 import {formatPrice} from '../utils/format'
-
+import {Card, Accordion} from 'react-bootstrap'
+import styled from "styled-components"
+import ReactSwipe from "react-swipe"
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faPhoneAlt,
+  faEnvelope,
+  faArrowAltCircleRight,
+  faArrowAltCircleLeft,
+} from "@fortawesome/free-solid-svg-icons"
+import { Carousel } from 'react-responsive-carousel';
 
 const row = {
     width: '475px',
@@ -22,6 +34,13 @@ const image= {
 }
 
 
+const pstyle= {
+    fontSize: '20px'
+  
+}
+
+
+
 
 
 
@@ -29,79 +48,91 @@ const ProductTemplate = ({data}) => {
 
     const [qty, setQty] = useState(1)
     const { addToCart } = useContext(CartContext)
+    let reactSwipeEl
 
     console.log("ProductTemplate.render data", data)
     return(
         <Layout>
 
-
-            <div class="container">
-     
+         <div className="product-page">
+  <div>
+            <div class="container ">
+        
             <div class="text-center">
-            <div class="card">
-			<div class="container-fliud">
-				<div class="wrapper row justify-content-center">
-					<div class="preview col-md-6">
-						
-						<div class="preview-pic tab-content">
-						  <div  id="pic-1">
-                          <Img fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} />
-                          
-                          
-                          
-                          </div>
-						
-						</div>
-				
-						
-					</div>
-					<div class="details col-md-6">
-						<h3 class="product-title">{data.strapiProduct.name}</h3>
-						<div class="rating">
-							<div class="stars">
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-							</div>
-							<span class="review-no">41 reviews</span>
-						</div>
-						<p class="product-description">{data.strapiProduct.description}</p>
-						<h4 class="price">current price: <span>{formatPrice(data.strapiProduct.price_in_cent)}</span></h4>
-                        <div><p class="vote"> Select your quanity </p><input 
-                type="number" 
-                min="0"
-                value={qty} 
-                onChange={(event) => setQty(event.target.value)}
-            /></div>
-						
-					
-					
-						<div class="action m-5">
-							<button  onClick={() => addToCart(data.strapiProduct, qty)}class="add-to-cart btn btn-default" type="button">add to cart</button>
-						
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <div className="card" >
+           			<div class="container">
+			<div class="wrapper row justify-content-center mb-5">
+					<div class=" col-lg-8">
+                     <div >
+ 						  <div>
+                           <AwesomeSlider>
+    <div>                   <Img
+            fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
+    <div>                   <Img
+            fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
+    <div>                   <Img
+            fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
+    <div>                   <Img
+            fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} /></div>
+  </AwesomeSlider>
+            
+         
+        
 
 </div>
+
+
+
+
+
+
+
+                </div>          
+                </div>
+
+
+                              <div class="details col-lg-4 mt-5">
+ 						<h3 class="product-title">{data.strapiProduct.name}</h3> 						<div class="rating"> 							<div class="stars"> 								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span> 								<span class="fa fa-star"></span> 					<span class="fa fa-star"></span>							</div>							<span class="review-no">41 reviews</span> 					</div>
+ 					
+ 						<h4 class="price">Current Price: <span>{formatPrice(data.strapiProduct.price_in_cent)}</span></h4>
+ <div className='mb-5'><p style={pstyle}> </p>
+
+
+<div>
+<div class="form-group">
+    <label for="exampleSelect1"> Select your quanity</label>
+    <select value={qty} 
+                 onChange={(event) => setQty(event.target.value)} class="form-control" id="exampleSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+ 
+  
+
 </div>
+
+
+             </div> <Link to="/pickup_delivery"> 							<button  onClick={() => addToCart(data.strapiProduct, qty)}class="add-to-cart btn " type="button">add to cart</button>
+						</Link>
+</div>
+                      
+                </div>
+                
+                </div>
+               
+              
+</div>
+</div>
+</div>
+</div>
+</div>
+
         </Layout>
 
     )
@@ -114,9 +145,24 @@ export const query = graphql`
         strapiProduct(id: {eq: $id}) {
             strapiId
             name
+            type
             price_in_cent
             description
             thumbnail {
+                childImageSharp {
+                    fixed(width: 340){
+                        ...GatsbyImageSharpFixed
+                    }
+                }
+            }
+            products_one {
+                childImageSharp {
+                    fixed(width: 340){
+                        ...GatsbyImageSharpFixed
+                    }
+                }
+            }
+            products_two {
                 childImageSharp {
                     fixed(width: 340){
                         ...GatsbyImageSharpFixed

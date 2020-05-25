@@ -1,0 +1,25 @@
+section.p-page {
+    position: relative;
+    justify-content: center;
+    display: flex;
+    padding-top: 200px;
+    background-position: center;
+    @include background-cover;
+    .pd-content {
+      position: relative;
+      z-index: 1;
+      h2 {
+      @include heading-font;
+      }
+      p {
+      @include body-font;
+     
+      }
+      @media (min-width: 768px) {
+        h2 {
+            @include heading-font;
+        }
+      }
+    }
+  
+  }

@@ -2,9 +2,14 @@ import React, { useEffect, useState, useContext } from "react"
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js"
 
 import { CartContext } from "../context/CartContext"
-
+import Scroll from "../components/Scroll"
 import { formatPrice } from "../utils/format"
-
+import {
+  cartSubtotal, 
+  cartTotal, 
+  shouldPayShipping, 
+  SHIPPING_RATE
+} from '../utils/cart'
 import { API_URL } from "../utils/url"
 
 const Card_Styles = {
@@ -38,6 +43,12 @@ const iframeStyles = {
   const cardElementOpts = {
     iconStyle: "solid",
     style: iframeStyles,
+    base: {
+      color: "#000",
+      border: "soild 2px red",
+      padding: "34px 32px",
+      fontSize: "16px",
+    }
   
   };
 
@@ -52,7 +63,7 @@ const generateInput = (label, value, setOnChange, inline = false) => {
         <label htmlFor={label}>{label}</label>
       </div>
 
-      <input class="form-control"
+      <input class="form-control my-input"
         id={label}
         value={value}
         onChange={event => setOnChange(event.target.value)}
@@ -183,36 +194,38 @@ export default () => {
 <div class="row">
 <div class="col-md-6">
 <div className="section-heading text-center m-5">
-                <h3>Receiver</h3>
+                <h5 class="form-heading">Receiver</h5>
                 <p className="text-muted">Person Receiving Cart</p>
                 <hr class="" />
               </div>
 {generateInput("Receiver Name", shipping_name, setShipping_name)}
           {generateInput("Receiver Address",shipping_address,setShipping_address)}
-          {generateInput("Receiver State", shipping_state, setShipping_state)}
+          {generateInput("Receiver Province", shipping_state, setShipping_state)}
           {generateInput("Receiver City", shipping_country, setShipping_country)}
           {generateInput("Phone", shipping_zip, setShipping_zip)}
 
 </div>
 <div class="col-md-6">
 <div className="section-heading text-center m-5">
-                <h3>Sender</h3>
+                <h3 class="form-heading">Sender</h3>
                 <p className="text-muted">Person Sending Cart</p>
                 <hr class="" />
               </div>
 {generateInput("Name on Card",name_on_card, setName_on_card)}
           {generateInput("E-mail",sender_email,setSender_email)}
-Credit/Debit Card Number
+<div className="mt-3">Credit/Debit Card Number</div>
           <CardElement class="card mt-4"   options={cardElementOpts}
           />
-          <button class="btn-buy" style={{ marginTop: "12px" }} disabled={!stripe || !valid()}>
+          
+          <button class="btn-buy mb-5" style={{ marginTop: "12px" }} disabled={!stripe || !valid()}>
             Buy it
           </button>
+          {!loading && <h3 class="form-heading"><div><h5 class='form-heading-charge' >Total Charge</h5></div> {formatPrice(cartTotal(cart))}</h3>}
+      {loading && <h3>Loading</h3>}
 </div>
 
 </div>
-{!loading && <h3>Total: {formatPrice(total)}</h3>}
-      {loading && <h3>Loading</h3>}
+
 
 
 

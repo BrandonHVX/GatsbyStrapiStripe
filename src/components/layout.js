@@ -8,11 +8,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
+import Navbar from "./Navbar";
+import TopBar from "./TopBar";
+import LogoImage from './LogoImage'
 import '../sass/new-age.scss';
 import './layout.css';
-
 const shop = {
   padding: '10px 20px 40px 20px'
 }
@@ -32,8 +32,8 @@ const Layout = ({ children }) => {
   return (
     <>
     
-      <Header siteTitle={data.site.siteMetadata.title} />
-      
+   <Navbar/>
+    
       <div
         style={{
           margin: `0 auto`,
@@ -41,13 +41,17 @@ const Layout = ({ children }) => {
           
         }}
       >
-        <main>{children}</main>
-        <footer>
+ 
+    
+        <main>
+        
+{children}</main>
+       
+      </div> <footer>
           © {new Date().getFullYear()}, All rights reserved
           {` `}
           Bonmaket
         </footer>
-      </div>
     </>
   )
 }

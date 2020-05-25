@@ -1,24 +1,25 @@
 @import './bootstrap/bootstrap.min.css';
 @import './device-mockups/device-mockups.min.css';
 
-
 @import 'variables.scss';
 @import 'mixins.scss';
 @import 'global.scss';
 @import 'navbar.scss';
 @import 'masthead.scss';
-@import 'pricing.scss';
 @import 'download.scss';
-@import 'landing.scss';
+@import 'cart.scss';
 @import 'features.scss';
-@import 'products.scss';
-@import 'product-page.scss';
-@import 'cta.scss';
-@import 'contact.scss';
 @import 'footer.scss';
+@import 'landing-about.scss';
+@import 'landing-products.scss';
+@import 'landing-banner.scss';
+@import 'product-page.scss';
+@import 'landing-services.scss';
+@import 'delivery-pickup';
 @import 'bootstrap-overrides.scss';
 
 @import './fontawesome/css/all.min.css';
 @import url('https://fonts.googleapis.com/css?family=Lato');
-@import url('https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
 @import url('https://fonts.googleapis.com/css?family=Muli');
+

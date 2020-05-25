@@ -45,18 +45,61 @@ export default ({children}) => {
     }
 
 
+    const removeItem = (product) => {
+        const copy = [...cart]
+        //If the product is already there
+        const indexOfProduct = copy.findIndex((alreadyInCart) => 
+            alreadyInCart.strapiId  === product.strapiId
+        )
+        if(copy[indexOfProduct].qty < 1){
+       
+            copy.splice(indexOfProduct, 1)
+    
+           
+    
+        } else {
+            copy.splice(indexOfProduct, 1)
+        }
+        
+        updateCart(copy)
 
-
-
-
-
-
+    }
 
 
     
 
+    const productInCart = (product, qty = 1) => {
+        const copy = [...cart]
+        //If the product is already there
+        const indexOfPickUp = copy.findIndex((PickUpInCart) => 
+        PickUpInCart.strapiId  >= 5
+        )
+
+        const indexOfDelivery = copy.findIndex((deliveryInCart) => 
+        deliveryInCart.strapiId >= 4
+    )
+    
+        if(indexOfPickUp && indexOfDelivery  > 0){
+           
+            alert('Pickup Already Added To Cart');
+            
+    
+
+        } else {
+            //Set the qty 1 
+            product.qty = parseInt(qty)
+    
+            //Push the product
+            copy.push(product)
+        }
+        
+        updateCart(copy)
+    }
+
+
+
     return(
-        <CartContext.Provider value={{cart, addToCart, clearCart}}>
+        <CartContext.Provider value={{cart, addToCart, clearCart,removeItem, productInCart}}>
             {children}
         </CartContext.Provider>
     )

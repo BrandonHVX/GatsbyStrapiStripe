@@ -1,5 +1,4 @@
-// Styling for the download section
-section.download {
+section.banner {
     position: relative;
     padding: 50px 0;
     background-blend-mode: multiply;
@@ -8,7 +7,7 @@ section.download {
     background-size: 100%;
     background-position: center center;
     h2 {
-      font-size: 50px;
+      font-size: 40px;
       font-weight: 800;
       margin-top: 0;
     }
@@ -30,26 +29,7 @@ section.download {
     }
     @media (min-width: 768px) {
       h2 {
-        font-size: 70px;
+        font-size: 60px;
       }
     }
-  }
-  
-
-
-  .StripeElement {
-    border: 1px solid #ced4da;
-    display: block;
-    width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   }
