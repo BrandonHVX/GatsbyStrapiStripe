@@ -168,34 +168,49 @@ export const query = graphql`
         strapiProduct(id: {eq: $id}) {
             strapiId
             name
-          
             price_in_cent
             description
             thumbnail {
                 childImageSharp {
                     fixed(width: 300){
-                        ...GatsbyImageSharpFixed
+                        base64
+                        width
+                        height
+                        src
+                        srcSet
                     }
                 }
             }
             products_one {
                 childImageSharp {
                     fixed(width: 300){
-                        ...GatsbyImageSharpFixed
+                        base64
+                        width
+                        height
+                        src
+                        srcSet
                     }
                 }
             }
             products_two {
                 childImageSharp {
                     fixed(width: 300){
-                        ...GatsbyImageSharpFixed
+                        base64
+                        width
+                        height
+                        src
+                        srcSet
                     }
                 }
             }
             products_three {
                 childImageSharp {
                     fixed(width: 300){
-                        ...GatsbyImageSharpFixed
+                        base64
+                        width
+                        height
+                        src
+                        srcSet
                     }
                 }
             }
