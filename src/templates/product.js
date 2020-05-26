@@ -79,11 +79,15 @@ const ProductTemplate = ({data}) => {
 
                   </div>
                   <div>
-                  <Img fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} />
+                  <Img fixed={data.strapiProduct.products_one.childImageSharp.fixed} />
 
                   </div>
                   <div>
-                  <Img fixed={data.strapiProduct.thumbnail.childImageSharp.fixed} />
+                  <Img fixed={data.strapiProduct.products_two.childImageSharp.fixed} />
+                    
+                  </div>
+                  <div>
+                  <Img fixed={data.strapiProduct.products_three.childImageSharp.fixed} />
                     
                   </div>
                 </ReactSwipe>
@@ -182,6 +186,13 @@ export const query = graphql`
                 }
             }
             products_two {
+                childImageSharp {
+                    fixed(width: 300){
+                        ...GatsbyImageSharpFixed
+                    }
+                }
+            }
+            products_three {
                 childImageSharp {
                     fixed(width: 300){
                         ...GatsbyImageSharpFixed
