@@ -31,9 +31,9 @@ const Header = ({ siteTitle }) => {
             <div class="navi-left ml-2">
 
 
-<Dropdown>
-  <Dropdown.Toggle c variant="success" id="dropdown-basic">
-  <i class="fas fa-phone-alt mr-2"></i>Phone
+<Dropdown >
+  <Dropdown.Toggle className="mb-1" variant="success" id="dropdown-basic">
+  <i class="fas fa-phone-alt mr-2 "></i>Phone
   </Dropdown.Toggle>
 
   <Dropdown.Menu>

@@ -2,8 +2,14 @@
 footer {
     padding: 25px 0;
     text-align: center;
-    color: fade-out(white, .7);
-    background-color: $gray-darker;
+    color: fade-out(white, .3);
+    background:$theme-secondary;
+
+
+
+
+
+
     p {
         font-size: 12px;
         margin: 0;

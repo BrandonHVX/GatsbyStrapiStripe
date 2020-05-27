@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Bonmaket`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `Get More For Less!`,
+    author: `Brandon`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -31,7 +31,7 @@ module.exports = {
         // Setting a color is optional.
         color: `tomato`,
         // Disable the loading spinner.
-        showSpinner: false,
+        showSpinner: true,
       },
     },
     `gatsby-transformer-sharp`,

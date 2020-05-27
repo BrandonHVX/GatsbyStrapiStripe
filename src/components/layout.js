@@ -13,10 +13,16 @@ import TopBar from "./TopBar";
 import LogoImage from './LogoImage'
 import '../sass/new-age.scss';
 import './layout.css';
+
+import styled, { keyframes } from 'styled-components';
+import { fadeIn} from 'react-animations';
+const FadeAnimation = keyframes`${fadeIn}`;
+const FadeDiv = styled.div`
+  animation: 1s ${FadeAnimation};
+`;
 const shop = {
   padding: '10px 20px 40px 20px'
 }
-
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -30,6 +36,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
+    <FadeDiv>
     <>
     
    <Navbar/>
@@ -52,6 +59,7 @@ const Layout = ({ children }) => {
           Bonmaket
         </footer>
     </>
+    </FadeDiv>
   )
 }
 
