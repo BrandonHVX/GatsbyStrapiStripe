@@ -57,7 +57,7 @@ const ProductTemplate = ({data}) => {
     return(
         <Layout>
 
-         <div className="product-page">
+         <section className="product-page">
   <div>
             <div class="container ">
         
@@ -154,7 +154,7 @@ const ProductTemplate = ({data}) => {
 </div>
 </div>
 </div>
-</div>
+</section>
 
         </Layout>
 

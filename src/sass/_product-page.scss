@@ -3,10 +3,10 @@
 .product-page {
   position: relative;
   justify-content: center;
-height: 100vh;
+
   background-position: center;
 margin-top: 250px;
-margin-bottom:300px;
+margin-bottom:200px;
   @include background-cover;
   .products-content {
     position: relative;

@@ -50,11 +50,11 @@ const Pickup_DeliveryPage = ({data}) => (
                     <h1>Pick-Up Or Delivery</h1>
                     <p className="text-muted">Please Select</p>
               <hr className="mb-3" />
-                    
+              <Link to="/products-page"><button className="btn btn-warning"><i className="fa fa-angle-left"></i> Back To Products</button></Link>
                     
                      </div>
                    
-                     {data.allStrapiProduct.nodes.map(product => (
+                     {data.allStrapiProduct.nodes.slice(4,5).map(product => (
        <Link to={fromDeliverySlugToUrl(product.slug)}>
 
 
@@ -79,7 +79,31 @@ const Pickup_DeliveryPage = ({data}) => (
       </Link>
        
       ))}   
-                 
+                                 {data.allStrapiProduct.nodes.slice(3,4).map(product => (
+       <Link to={fromDeliverySlugToUrl(product.slug)}>
+
+
+   
+    <div className="product-slider">
+   <div className="product-slider__wrp swiper-wrapper">
+     <div className="product-slider__item swiper-slide">
+       <div className="product-slider__img">
+        
+        <Img className="img" fixed={product.thumbnail.childImageSharp.fixed} /> 
+       </div>
+       <div className="product-slider__content">
+
+         <div className="product-slider__title">{product.name}</div>
+       
+         <button className="btn">Select</button>
+       </div>
+     </div>
+   </div>   <div className="product-slider__pagination"></div>
+ </div>
+
+      </Link>
+       
+      ))}      
          
           
         </div>
