@@ -58,16 +58,7 @@ const ProductTemplate = ({data}) => {
 					</div>
 					<div class="details col-md-6">
 						<h3 class="product-title">{data.strapiProduct.name}</h3>
-						<div class="rating">
-							<div class="stars">
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-							</div>
-							<span class="review-no">41 reviews</span>
-						</div>
+                        <h4 class="product-description">{data.strapiProduct.description}</h4>
                         <h4 class="product-description">{data.strapiProduct.location}</h4>
                         <h4 class="product-address">{data.strapiProduct.address}</h4>
                         <h4 class="product-city">{data.strapiProduct.city}</h4>
