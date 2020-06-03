@@ -65,7 +65,7 @@ const ProductTemplate = ({ data }) => {
                             <div className="product-card" >
                                 <div class="container">
                                     <div class="wrapper row  mb-5">
-                                        <div class="col-lg-7 mt-5">
+                                        <div class="col-lg-7 mt-2">
                                             <div >
 
                                                 <ReactSwipe
@@ -92,9 +92,11 @@ const ProductTemplate = ({ data }) => {
                                                     </div>
                                                 </ReactSwipe>
 
-                                                Swipe Or Click To View Products
+                                                <div>Swipe Or Click To View All Products</div> 
+                                                <div>That Are Included With Your Purchase.</div>
+                                                
 
-  <div class="nav-buttons p-5">
+  <div class="nav-buttons p-3">
                                                     <FontAwesomeIcon style={buttonspace}
                                                         onClick={() => reactSwipeEl.prev()}
                                                         icon={faArrowAltCircleLeft}
@@ -113,7 +115,7 @@ const ProductTemplate = ({ data }) => {
                                         </div>
 
 
-                                        <div class="details col-lg-4 mt-5">
+                                        <div class="details col-lg-4 ">
                                             <h3 class="product-title">{data.strapiProduct.name}</h3> 						<div class="rating"> 							<div class="stars"> 								<span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span> 								<span class="fa fa-star"></span> 					<span class="fa fa-star"></span>							</div>							<span class="review-no">41 reviews</span> 					</div>
