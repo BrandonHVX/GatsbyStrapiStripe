@@ -37,7 +37,7 @@ export default () => {
         <Layout>
             <SEO title="Cart" />
             <div className="container">
-            <div className="checkout-page">
+            <div  className="checkout-page">
             <div classNameName="section-heading text-center mb-5">
                 <h1>Checkout</h1>
               
@@ -111,7 +111,7 @@ export default () => {
 
 </row>
 
-           <div class="mt-5">   
+           <div  class="mt-5 ">   
            {cart && cart.length > 0 &&
 
 
@@ -130,11 +130,11 @@ export default () => {
 
 
                 }</div>
-             
-            </div>
-            <div id="contact">   {showCheckout &&
+               <div >   {showCheckout &&
                 <Checkout cart={cart} />
             }</div>
+            </div>
+          
          
             </div>
 
@@ -147,9 +147,10 @@ export default () => {
             </div>
             
 
-             
+ 
 
 </div>
+
 </div>
         </Layout>
     )

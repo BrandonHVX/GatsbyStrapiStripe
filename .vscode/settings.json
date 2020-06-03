@@ -1,2 +1,12 @@
 {
+    "prettier.resolveGlobalModules": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
+    // Enable per-language
+    "[javascript]": {
+        "editor.formatOnSave": true
+    }
 }

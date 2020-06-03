@@ -15,7 +15,7 @@ import '../sass/new-age.scss';
 import './layout.css';
 
 import styled, { keyframes } from 'styled-components';
-import { fadeIn} from 'react-animations';
+import { fadeIn } from 'react-animations';
 const FadeAnimation = keyframes`${fadeIn}`;
 const FadeDiv = styled.div`
   animation: 1s ${FadeAnimation};
@@ -37,28 +37,29 @@ const Layout = ({ children }) => {
 
   return (
     <FadeDiv>
-    <>
-    
-   <Navbar/>
-    
-      <div
-        style={{
-     
-          maxWidth: 1960,
-        }}
-      >
- 
-    
-        <main>
-        
-{children}</main>
-       
-      </div> <footer>
+      <>
+
+        <Navbar />
+
+        <div
+          style={{
+            position: 'relative',
+            minHeight: '100vh',
+
+          }}
+        >
+
+
+          <main>
+
+            {children}</main>
+
+        </div> <footer>
           © {new Date().getFullYear()}, All rights reserved
           {` `}
           Bonmaket
         </footer>
-    </>
+      </>
     </FadeDiv>
   )
 }

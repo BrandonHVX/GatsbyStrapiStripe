@@ -1,9 +1,12 @@
 // Styling for the footer
 footer {
-    padding: 25px 0;
+    
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(211, 5, 5);
+    color: white;
     text-align: center;
-    color: fade-out(white, .3);
-    background:$theme-secondary;
 
 
 

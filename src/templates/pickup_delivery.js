@@ -34,7 +34,7 @@ const ProductTemplate = ({data}) => {
     return(
         <Layout>
 
-         <section className="product-page">
+         <div style={{marginTop: '300px'}}>
   <div className="products-content">
             <div class="container">
      
@@ -58,7 +58,7 @@ const ProductTemplate = ({data}) => {
 					</div>
 					<div class="details col-md-6">
 						<h3 class="product-title">{data.strapiProduct.name}</h3>
-                        <h4 class="product-description">{data.strapiProduct.description}</h4>
+					
                         <h4 class="product-description">{data.strapiProduct.location}</h4>
                         <h4 class="product-address">{data.strapiProduct.address}</h4>
                         <h4 class="product-city">{data.strapiProduct.city}</h4>
@@ -101,7 +101,7 @@ const ProductTemplate = ({data}) => {
 
 </div>
 </div>
-</section>
+</div>
         </Layout>
 
     )

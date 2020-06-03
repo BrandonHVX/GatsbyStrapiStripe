@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Bonmaket`,
     description: `Get More For Less!`,
-    author: `Brandon`,
+    author: `Bonmaket`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -10,12 +10,12 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: 'https://bonmaket-store.herokuapp.com', 
+        apiURL: 'https://bonmaket-store.herokuapp.com',
         queryLimit: 1000, // Default to 100
         contentTypes: [`product`],
         //If using single types place them in this array.
-       
-      
+
+
       },
     },
     {

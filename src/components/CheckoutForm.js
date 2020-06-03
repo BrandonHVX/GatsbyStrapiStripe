@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useContext } from "react"
-import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js"
+import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js"
 
 import { CartContext } from "../context/CartContext"
 import Scroll from "../components/Scroll"
 import { formatPrice } from "../utils/format"
+import { navigate } from "gatsby"
 import {
-  cartSubtotal, 
-  cartTotal, 
-  shouldPayShipping, 
+  cartSubtotal,
+  cartTotal,
+  shouldPayShipping,
   SHIPPING_RATE
 } from '../utils/cart'
 import { API_URL } from "../utils/url"
@@ -25,32 +26,32 @@ const Card_Styles = {
 
 
 const iframeStyles = {
-    base: {
-      color: "#000",
-      border: "soild 2px red",
-      padding: "34px 32px",
-      fontSize: "16px",
-    },
-    invalid: {
-      iconColor: "red",
-      color: "red"
-    },
-    complete: {
-      iconColor: "green"
-    }
-  };
+  base: {
+    color: "#000",
+    border: "soild 2px red",
+    padding: "34px 32px",
+    fontSize: "16px",
+  },
+  invalid: {
+    iconColor: "red",
+    color: "red"
+  },
+  complete: {
+    iconColor: "green"
+  }
+};
 
-  const cardElementOpts = {
-    iconStyle: "solid",
-    style: iframeStyles,
-    base: {
-      color: "#000",
-      border: "soild 2px red",
-      padding: "34px 32px",
-      fontSize: "16px",
-    }
-  
-  };
+const cardElementOpts = {
+  iconStyle: "solid",
+  style: iframeStyles,
+  base: {
+    color: "#000",
+    border: "soild 2px red",
+    padding: "34px 32px",
+    fontSize: "16px",
+  }
+
+};
 
 
 
@@ -77,13 +78,13 @@ export default () => {
   const elements = useElements()
 
   const { cart, clearCart } = useContext(CartContext)
-  const [name_on_card, setName_on_card] = useState("")
-  const [sender_email, setSender_email] = useState("")
-  const [shipping_name, setShipping_name] = useState("")
-  const [shipping_address, setShipping_address] = useState("")
-  const [shipping_state, setShipping_state] = useState("")
-  const [shipping_country, setShipping_country] = useState("")
-  const [shipping_zip, setShipping_zip] = useState("")
+  const [name, setName] = useState("")
+  const [receipt_email, setReceipt_email] = useState("")
+  const [receiver_name, setReceiver_name] = useState("")
+  const [receiver_address, setReceiver_address] = useState("")
+  const [receiver_state, setReceiver_state] = useState("")
+  const [receiver_city, setReceiver_city] = useState("")
+  const [receiver_phone, setReceiver_phone] = useState("")
 
   const [token, setToken] = useState(null)
   const [total, setTotal] = useState("loading")
@@ -96,13 +97,13 @@ export default () => {
 
   const valid = () => {
     if (
-      !shipping_name ||
-      !shipping_address ||
-      !shipping_state ||
-      !shipping_country ||
-      !shipping_zip ||
-      !name_on_card ||
-      !sender_email
+      !receiver_name ||
+      !receiver_address ||
+      !receiver_state ||
+      !receiver_city ||
+      !receiver_phone ||
+      !name
+
     ) {
       return false
     }
@@ -110,25 +111,47 @@ export default () => {
     return true
   }
 
+
+
   const handleSubmit = async event => {
     event.preventDefault()
     setLoading(true)
+
+
+
+
     console.log("HandleSubmit", event)
     const result = await stripe.confirmCardPayment(token, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        card: elements.getElement(CardNumberElement),
+        billing_details: {
+          name: event.target.name.value,
+
+        },
+
+
+
       },
+
+      receipt_email: event.target.receipt_email.value,
+
+
     })
+
+
+
+
+
 
     const data = {
       paymentIntent: result.paymentIntent,
-      shipping_name,
-      shipping_address,
-      shipping_state,
-      shipping_country,
-      shipping_zip,
-      name_on_card,
-      sender_email,
+      receiver_name,
+      receiver_address,
+      receiver_state,
+      receiver_city,
+      receiver_phone,
+      name,
+      receipt_email,
       cart,
     }
 
@@ -147,22 +170,35 @@ export default () => {
     setLoading(false)
 
     clearCart()
+
+
   }
 
   useEffect(() => {
     const loadToken = async () => {
       setLoading(true)
+
+
       const response = await fetch(`${API_URL}/orders/payment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+
         body: JSON.stringify({
           cart: cart.map(product => ({
             ...product,
             ...{ id: product.strapiId },
           })),
+          receiver_name: name,
+          receiver_phone: "555-555-5555",
+
+
+
         }),
+
+
+
       })
 
       const data = await response.json()
@@ -178,7 +214,7 @@ export default () => {
 
   return (
     <div style={{ margin: "24px 0" }}>
-  
+
 
       {!success && (
         <form
@@ -190,57 +226,100 @@ export default () => {
           onSubmit={handleSubmit}
         >
 
-<div class="container">
-<div class="row">
-<div class="col-md-6">
-<div className="section-heading text-center m-5">
-                <h5 class="form-heading">Receiver</h5>
-                <p className="text-muted">Person Receiving Cart</p>
-                <hr class="" />
-              </div>
-{generateInput("Receiver Name", shipping_name, setShipping_name)}
-          {generateInput("Receiver Address",shipping_address,setShipping_address)}
-          {generateInput("Receiver Province", shipping_state, setShipping_state)}
-          {generateInput("Receiver City", shipping_country, setShipping_country)}
-          {generateInput("Phone", shipping_zip, setShipping_zip)}
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <div className="section-heading text-center m-5">
+                  <h5 class="form-heading">Receiver</h5>
+                  <p className="text-muted">Person Receiving Cart</p>
+                  <hr class="" />
+                </div>
 
-</div>
-<div class="col-md-6">
-<div className="section-heading text-center m-5">
-                <h3 class="form-heading">Sender</h3>
-                <p className="text-muted">Person Sending Cart</p>
-                <hr class="" />
+                <input
+                  type="text"
+                  name="receiver_name"
+                  placeholder="Receiver Name"
+                  value={receiver_name}
+                  onChange={e => setReceiver_name(e.target.value)}
+                />
+                <input
+                  type="name"
+                  name="receiver_address"
+                  placeholder="Receiver/Delivery Address"
+                  value={receiver_address}
+                  onChange={e => setReceiver_address(e.target.value)}
+                />
+                <input
+                  type="name"
+                  placeholder="Receiver Province"
+                  name="receiver_state"
+                  value={receiver_state}
+                  onChange={e => setReceiver_state(e.target.value)}
+                />
+                <input
+                  type="name"
+                  placeholder="Receiver City"
+                  name="receiver_country"
+                  value={receiver_city}
+                  onChange={e => setReceiver_city(e.target.value)}
+                />
+                <input
+                  type="name"
+                  placeholder="Receiver Phone"
+                  name="receiver_phone"
+                  value={receiver_phone}
+                  onChange={e => setReceiver_phone(e.target.value)}
+                />
               </div>
-{generateInput("Name on Card",name_on_card, setName_on_card)}
-          {generateInput("E-mail",sender_email,setSender_email)}
-<div className="mt-3">Credit/Debit Card Number</div>
-          <CardElement class="card mt-4"   options={cardElementOpts}
-          />
-          
-          <button class="btn-buy mb-5" style={{ marginTop: "12px" }} disabled={!stripe || !valid()}>
-            Buy it
+              <div class="col-md-6">
+                <div className="section-heading text-center m-5">
+                  <h3 class="form-heading">Sender</h3>
+                  <p className="text-muted">Person Sending Cart</p>
+                  <hr class="" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Name on Card"
+                  name="name"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                />
+
+                <input
+                  type="name"
+                  placeholder="Email"
+                  name="receipt_email"
+                  value={receipt_email}
+                  onChange={e => setReceipt_email(e.target.value)}
+                />
+                <div className="mt-3">Credit/Debit Card Number</div>
+                {/* <CardElement class="card mt-4" options={cardElementOpts}
+                /> */}
+                <CardNumberElement />
+                <CardCvcElement />
+                <CardExpiryElement />
+
+                <button class="btn-buy mb-5" style={{ marginTop: "12px" }} disabled={!stripe || !valid()}>
+                  Buy it
           </button>
-          {!loading && <h3 class="form-heading"><div><h5 class='form-heading-charge' >Total Charge</h5></div> {formatPrice(cartTotal(cart))}</h3>}
-      {loading && <h3>Loading</h3>}
-</div>
+                {!loading && <h3 class="form-heading"><div><h5 class='form-heading-charge' >Total Charge</h5></div> {formatPrice(cartTotal(cart))}</h3>}
+                {loading && <h3>Loading</h3>}
+              </div>
 
-</div>
-
-
+            </div>
 
 
 
-</div>
+
+
+          </div>
 
 
 
         </form>
       )}
-      {success &&   <div className="section-heading text-center mb-5">
-                <h1>Thank You!</h1>
-            <h2 className="text-center">Your order was successfully processed!</h2>  
-                <hr class="mb-3" />
-              </div>}
+      {success && navigate("/success/")
+      }
     </div>
   )
 }
