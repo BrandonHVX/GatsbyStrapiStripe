@@ -54,7 +54,7 @@ const Pickup_DeliveryPage = ({data}) => (
                     
                      </div>
                    
-                     {data.allStrapiProduct.nodes.slice(4,5).map(product => (
+                     {data.allStrapiProduct.nodes.slice(5,5).map(product => (
        <Link to={fromDeliverySlugToUrl(product.slug)}>
 
 
@@ -79,7 +79,7 @@ const Pickup_DeliveryPage = ({data}) => (
       </Link>
        
       ))}   
-                                 {data.allStrapiProduct.nodes.slice(3,4).map(product => (
+                                 {data.allStrapiProduct.nodes.slice(2,4).map(product => (
        <Link to={fromDeliverySlugToUrl(product.slug)}>
 
 

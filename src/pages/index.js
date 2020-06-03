@@ -110,7 +110,7 @@ const IndexPage = ({data}) => (
                     
                      </div>
                    
-                     {data.allStrapiProduct.nodes.slice(2,3).map(product => (
+                     {data.allStrapiProduct.nodes.slice(4,5).map(product => (
        <Link to={fromProductSlugToUrl(product.slug)}>
 
 
