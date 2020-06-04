@@ -72,16 +72,16 @@ export default ({children}) => {
         const copy = [...cart]
         //If the product is already there
         const indexOfPickUp = copy.findIndex((PickUpInCart) => 
-        PickUpInCart.strapiId  >= 5
+        PickUpInCart.strapiId  >= 13
         )
 
         const indexOfDelivery = copy.findIndex((deliveryInCart) => 
-        deliveryInCart.strapiId >= 4
+        deliveryInCart.strapiId >= 12
     )
     
         if(indexOfPickUp && indexOfDelivery  > 0){
            
-            alert('Pickup Already Added To Cart');
+            alert('Pickup or Delivery Already Added To Cart');
             
     
 
