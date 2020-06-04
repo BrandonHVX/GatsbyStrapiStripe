@@ -54,7 +54,7 @@ const Pickup_DeliveryPage = ({data}) => (
                     
                      </div>
                    
-                     {data.allStrapiProduct.nodes.map(product => (
+                     {data.allStrapiProduct.nodes.slice(-2).map(product => (
        <Link to={fromDeliverySlugToUrl(product.slug)}>
 
 
@@ -102,7 +102,7 @@ export const pageQuery = graphql`
         name
         location
         address
-        city
+  
         phone
         price_in_cent
         strapiId

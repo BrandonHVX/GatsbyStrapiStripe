@@ -61,7 +61,7 @@ const ProductTemplate = ({data}) => {
 					
                         <h4 class="product-description">{data.strapiProduct.location}</h4>
                         <h4 class="product-address">{data.strapiProduct.address}</h4>
-                        <h4 class="product-city">{data.strapiProduct.city}</h4>
+                       
                         <h4 class="product-phone">{data.strapiProduct.phone}</h4>
 
 						<h4 class="price"><span>{formatPrice(data.strapiProduct.price_in_cent)}</span></h4>
@@ -116,7 +116,6 @@ export const query = graphql`
             name
             location
             address
-            city
             phone
             price_in_cent
             description
