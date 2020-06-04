@@ -54,7 +54,7 @@ const Pickup_DeliveryPage = ({data}) => (
                     
                      </div>
                    
-                     {data.allStrapiProduct.nodes.slice(5,5).map(product => (
+                     {data.allStrapiProduct.nodes.map(product => (
        <Link to={fromDeliverySlugToUrl(product.slug)}>
 
 
@@ -79,31 +79,7 @@ const Pickup_DeliveryPage = ({data}) => (
       </Link>
        
       ))}   
-                                 {data.allStrapiProduct.nodes.slice(2,4).map(product => (
-       <Link to={fromDeliverySlugToUrl(product.slug)}>
-
-
-   
-    <div className="product-slider">
-   <div className="product-slider__wrp swiper-wrapper">
-     <div className="product-slider__item swiper-slide">
-       <div className="product-slider__img">
-        
-        <Img className="img" fixed={product.thumbnail.childImageSharp.fixed} /> 
-       </div>
-       <div className="product-slider__content">
-
-         <div className="product-slider__title">{product.name}</div>
-       
-         <button className="btn">Select</button>
-       </div>
-     </div>
-   </div>   <div className="product-slider__pagination"></div>
- </div>
-
-      </Link>
-       
-      ))}      
+            
          
           
         </div>

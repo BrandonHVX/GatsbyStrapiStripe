@@ -110,7 +110,7 @@ const IndexPage = ({data}) => (
                     
                      </div>
                    
-                     {data.allStrapiProduct.nodes.slice(4,5).map(product => (
+                     {data.allStrapiProduct.nodes.map(product => (
        <Link to={fromProductSlugToUrl(product.slug)}>
 
 
@@ -135,56 +135,8 @@ const IndexPage = ({data}) => (
       </Link>
        
       ))}   
-                       {data.allStrapiProduct.nodes.slice(1,2).map(product => (
-       <Link to={fromProductSlugToUrl(product.slug)}>
-
-
    
-    <div className="product-slider">
-   <div className="product-slider__wrp swiper-wrapper">
-     <div className="product-slider__item swiper-slide">
-       <div className="product-slider__img">
-        
-        <Img className="img" fixed={product.thumbnail.childImageSharp.fixed} /> 
-       </div>
-       <div className="product-slider__content">
-
-         <div className="product-slider__title">{product.name}</div>
-         <div className="product-slider__text">{product.description}</div>
-         <button className="btn">View Cart</button>
-       </div>
-     </div>
-   </div>   <div className="product-slider__pagination"></div>
- </div>
-
-      </Link>
-       
-      ))}  
-                       {data.allStrapiProduct.nodes.slice(0,1).map(product => (
-       <Link to={fromProductSlugToUrl(product.slug)}>
-
-
-   
-    <div className="product-slider">
-   <div className="product-slider__wrp swiper-wrapper">
-     <div className="product-slider__item swiper-slide">
-       <div className="product-slider__img">
-        
-        <Img className="img" fixed={product.thumbnail.childImageSharp.fixed} /> 
-       </div>
-       <div className="product-slider__content">
-
-         <div className="product-slider__title">{product.name}</div>
-         <div className="product-slider__text">{product.description}</div>
-         <button className="btn">View Cart</button>
-       </div>
-     </div>
-   </div>   <div className="product-slider__pagination"></div>
- </div>
-
-      </Link>
-       
-      ))}  
+     
                  
         
   
