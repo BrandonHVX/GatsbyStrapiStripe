@@ -13,7 +13,7 @@ module.exports = {
         apiURL: 'https://bonmaket-store.herokuapp.com',
         queryLimit: 1000, // Default to 100
         contentTypes: [`product`],
-        //If using single types place them in this.
+        //If using single types place them in this array.
 
 
       },

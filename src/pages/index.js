@@ -137,7 +137,8 @@ const IndexPage = ({data}) => (
       ))}   
    
      
-                 
+  
+   
         
   
         </div>
