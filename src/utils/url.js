@@ -1,1 +1,1 @@
-export const API_URL = process.env.GATSBY_API_URL || 'https://bonmaket-store.herokuapp.com'
+export const API_URL =  'https://bonmaket-store.herokuapp.com'

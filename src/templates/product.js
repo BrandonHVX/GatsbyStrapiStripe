@@ -154,6 +154,23 @@ const ProductTemplate = ({ data }) => {
 
                             </div>
                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
                     </div>
                 </div>
             </div>
