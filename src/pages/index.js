@@ -110,7 +110,7 @@ const IndexPage = ({data}) => (
                     
                      </div>
                    
-                     {data.allStrapiProduct.nodes.slice(0,3).map(product => (
+                     {data.allStrapiProduct.nodes.slice(2,5).map(product => (
        <Link to={fromProductSlugToUrl(product.slug)}>
 
 
@@ -253,7 +253,6 @@ export const pageQuery = graphql`
         strapiId
         location
         address
-        
         slug
         thumbnail {
           childImageSharp {

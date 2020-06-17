@@ -44,7 +44,7 @@ exports.createPages = ({actions, graphql}) => {
                 }
             })
         })
-        result.data.allStrapiProduct.edges.slice(3,5).map(({node}) => {
+        result.data.allStrapiProduct.edges.slice(0,2).map(({node}) => {
             createPage({
                 path: `/pickup_delivery/${node.slug}`,
                 component: path.resolve(`src/templates/pickup_delivery.js`),
